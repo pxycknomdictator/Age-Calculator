@@ -1,5 +1,5 @@
 import React from "react";
-import arrow from "../../public/images/icon-arrow.svg";
+import arrow from "/images/icon-arrow.svg";
 
 const SubmidButton = () => {
   return (
