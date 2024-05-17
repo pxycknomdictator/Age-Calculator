@@ -8,6 +8,7 @@ const AgeContextProvider = ({ children }) => {
   const [displayDate, setdisplayDate] = useState("--");
   const [displayMonth, setdisplayMonth] = useState("--");
   const [displayYear, setdisplayYear] = useState("--");
+  const [trigger, setTrigger] = useState(false);
 
   const AgeCalculate = (birthdate, currentdate) => {
     let date = currentdate.getDate() - birthdate.getDate();
@@ -33,14 +34,25 @@ const AgeContextProvider = ({ children }) => {
     setdisplayYear((pre) => (pre = year));
   };
 
+  const checkValidAge = (date, month, year) => {
+    if (isNaN(date) || isNaN(month) || isNaN(year)) {
+      setTrigger(true);
+    } else if (date > 31 || month > 12 || year > new Date().getFullYear()) {
+      setTrigger(true);
+    } else {
+      setTrigger(false);
+      const birthDate = new Date(`${year}/${month}/${date}`);
+      const currentDate = new Date();
+      AgeCalculate(birthDate, currentDate);
+    }
+  };
+
   const SubmitData = () => {
     const date = userdateRef.current.value;
     const month = usermonthRef.current.value;
     const year = useryearRef.current.value;
 
-    const birthDate = new Date(`${year}/${month}/${date}`);
-    const currentDate = new Date();
-    AgeCalculate(birthDate, currentDate);
+    checkValidAge(date, month, year);
   };
 
   return (
@@ -53,6 +65,7 @@ const AgeContextProvider = ({ children }) => {
         displayDate,
         displayMonth,
         displayYear,
+        trigger,
       }}
     >
       {children}

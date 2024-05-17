@@ -2,12 +2,17 @@ import React, { useContext } from "react";
 import AgeContext from "../store/AgeContext";
 
 const InputFields = () => {
-  const { userdateRef, usermonthRef, useryearRef } = useContext(AgeContext);
+  const { userdateRef, usermonthRef, useryearRef, trigger } =
+    useContext(AgeContext);
 
   return (
     <>
       <div>
-        <span className="tracking-[.2rem] font-semibold text-smokeygrey">
+        <span
+          className={`tracking-[.2rem] font-semibold ${
+            trigger ? "text-lightred" : "text-smokeygrey"
+          }`}
+        >
           DAY
         </span>
         <div className="mt-1">
@@ -18,9 +23,18 @@ const InputFields = () => {
             ref={userdateRef}
           />
         </div>
+        {trigger && (
+          <span className="text-xs text-lightred font-semibold italic">
+            Must be a valid Date
+          </span>
+        )}
       </div>
       <div>
-        <span className="tracking-[.2rem] font-semibold text-smokeygrey">
+        <span
+          className={`tracking-[.2rem] font-semibold ${
+            trigger ? "text-lightred" : "text-smokeygrey"
+          }`}
+        >
           MONTH
         </span>
         <div className="mt-1">
@@ -31,9 +45,18 @@ const InputFields = () => {
             ref={usermonthRef}
           />
         </div>
+        {trigger && (
+          <span className="text-xs text-lightred font-semibold italic">
+            Must be a valid Month
+          </span>
+        )}
       </div>
       <div>
-        <span className="tracking-[.2rem] font-semibold text-smokeygrey">
+        <span
+          className={`tracking-[.2rem] font-semibold ${
+            trigger ? "text-lightred" : "text-smokeygrey"
+          }`}
+        >
           YEAR
         </span>
         <div className="mt-1">
@@ -44,6 +67,11 @@ const InputFields = () => {
             ref={useryearRef}
           />
         </div>
+        {trigger && (
+          <span className="text-xs text-lightred font-semibold italic">
+            Must be a valid Year
+          </span>
+        )}
       </div>
     </>
   );
