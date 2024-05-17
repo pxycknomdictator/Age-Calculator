@@ -5,7 +5,7 @@ import AgeContextProvider from "./store/AgeContextProvider.jsx";
 const App = () => {
   return (
     <AgeContextProvider>
-      <Calculator />;
+      <Calculator />
     </AgeContextProvider>
   );
 };

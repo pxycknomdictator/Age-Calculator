@@ -39,6 +39,8 @@ const AgeContextProvider = ({ children }) => {
       setTrigger(true);
     } else if (date > 31 || month > 12 || year > new Date().getFullYear()) {
       setTrigger(true);
+    } else if (date === "" || month === "" || year === "") {
+      setTrigger(true);
     } else {
       setTrigger(false);
       const birthDate = new Date(`${year}/${month}/${date}`);
@@ -51,7 +53,6 @@ const AgeContextProvider = ({ children }) => {
     const date = userdateRef.current.value;
     const month = usermonthRef.current.value;
     const year = useryearRef.current.value;
-
     checkValidAge(date, month, year);
   };
 

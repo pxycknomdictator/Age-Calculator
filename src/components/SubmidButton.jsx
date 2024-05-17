@@ -10,7 +10,7 @@ const SubmidButton = () => {
       <div className="bg-lightgrey h-[1px] w-full"></div>
       <div
         onClick={SubmitData}
-        className="bg-purple rounded-full w-14 h-14 p-3 cursor-pointer hover:bg-black transition-all duration-300 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:w-[60px]"
+        className="bg-purple rounded-full w-14 h-14 p-3 cursor-pointer hover:bg-black transition-all absolute duration-300 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:w-[60px]"
       >
         <img className="w-full" src={arrow} alt="submitArrow" />
       </div>
